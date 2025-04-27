@@ -45,41 +45,43 @@ function DestinationLog() {
   };
   
   // User Interface Logic ---------
-  let addressBook = new AddressBook();
+  let destinationLog = new DestinationLog();
   
-  function listContacts(addressBookToDisplay) {
-      let contactsDiv = document.querySelector("div#contacts");
-      contactsDiv.innerText =  null;
-      const ul = document.createElement("ul");
-      Object.keys(addressBookToDisplay.contacts).forEach(function(key) {
-        const contact = addressBookToDisplay.findContact(key);
-        const li = document.createElement("li");
-        li.append(contact.fullName() + " " + contact.phoneNumber);
-        li.setAttribute("id", contact.id);
-        ul.append(li);
-      });
-      contactsDiv.append(ul);
-    }
+  function listDestinations(destinationLogToDisplay) {
+    let destinationsDiv = document.querySelector("div#destinations");
+    destinationsDiv.innerText = null;
+    const ul = document.createElement("ul");
+    Object.keys(destinationLogToDisplay.destinations).forEach(function(key) {
+      const destination = destinationLogToDisplay.findDestination(key);
+      const li = document.createElement("li");
+      li.append(destination.summary());
+      li.setAttribute("id", destination.id);
+      ul.append(li);
+    });
+    destinationsDiv.append(ul);
+  }
   
-    function displayContactDetails(event) {
-      const contact = addressBook.findContact(event.target.id);
-      document.querySelector(".first-name").innerText = contact.firstName;
-      document.querySelector(".last-name").innerText = contact.lastName;
-      document.querySelector(".phone-number").innerText = contact.phoneNumber;
-      document.querySelector("div#contact-details").removeAttribute("class");
-    }
+  function displayDestinationDetails(event) {
+    const destination = destinationLog.findDestination(event.target.id);
+    document.querySelector("#location").innerText = destination.location;
+    document.querySelector("#landmark").innerText = destination.landmark;
+    document.querySelector("#time-of-year").innerText = destination.timeOfYear;
+    document.querySelector("#notes").innerText = destination.notes;
+    document.querySelector("div#destinations-details").removeAttribute("class");
+  }
   
   function handleFormSubmission(event) {
     event.preventDefault();
-    const inputtedFirstName = document.querySelector("input#new-first-name").value;
-    const inputtedLastName = document.querySelector("input#new-last-name").value;
-    const inputtedPhoneNumber = document.querySelector("input#new-phone-number").value;
-    let newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber);
-    addressBook.addContact(newContact);
-    listContacts(addressBook);
+    const inputtedLocation = document.querySelector("input#new-location").value;
+    const inputtedLandmark = document.querySelector("input#new-landmark").value;
+    const inputtedTimeOfYear = document.querySelector("input#new-time-of-year").value;
+    const inputtedNotes = document.querySelector("input#new-notes").value;
+    let newDestination = new Destination(inputtedLocation, inputtedLandmark, inputtedTimeOfYear, inputtedNotes);
+    destinationLog.addDestination(newDestination);
+    listDestinations(destinationLog);
   }
   
-  window.addEventListener("load", function (){
-    document.querySelector("form#new-contact").addEventListener("submit", handleFormSubmission);
-    document.querySelector("div#contacts").addEventListener("click", displayContactDetails);
+  window.addEventListener("load", function() {
+    document.querySelector("form#new-destination").addEventListener("submit", handleFormSubmission);
+    document.querySelector("div#destinations").addEventListener("click", displayDestinationDetails);
   });
