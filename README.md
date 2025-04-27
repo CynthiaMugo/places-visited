@@ -39,7 +39,7 @@ Expectation: If the ID doesn't exist, the method should return false.
 
 
 ## Known Bugs  
-*   
+* The page clears upon refresh. Research on using localstorage to store the destination details  
 * If you experience any unexpected behavior, feel free to open an issue or contact the me directly
 
 ## Technologies Used  
