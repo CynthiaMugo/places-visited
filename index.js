@@ -54,7 +54,7 @@ function DestinationLog() {
     Object.keys(destinationLogToDisplay.destinations).forEach(function(key) {
       const destination = destinationLogToDisplay.findDestination(key);
       const li = document.createElement("li");
-      li.append(destination.summary());
+      li.append(destination.location);
       li.setAttribute("id", destination.id);
       ul.append(li);
     });
@@ -76,9 +76,13 @@ function DestinationLog() {
     const inputtedLandmark = document.querySelector("input#new-landmark").value;
     const inputtedTimeOfYear = document.querySelector("input#new-time-of-year").value;
     const inputtedNotes = document.querySelector("input#new-notes").value;
+
     let newDestination = new Destination(inputtedLocation, inputtedLandmark, inputtedTimeOfYear, inputtedNotes);
     destinationLog.addDestination(newDestination);
     listDestinations(destinationLog);
+
+    // Clear the form fields after submission
+    document.getElementById("new-destination").reset();
   }
   
   window.addEventListener("load", function() {
