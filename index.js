@@ -16,9 +16,9 @@ function DestinationLog() {
     return this.currentId;
   };
   
-  AddressBook.prototype.findContact = function(id) {
-    if (this.contacts[id] !== undefined) {
-      return this.contacts[id];
+  DestinationLog.prototype.findDestination = function(id) {
+    if (this.destinations[id] !== undefined) {
+      return this.destinations[id];
     }
     return false;
   };
