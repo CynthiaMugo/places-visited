@@ -6,26 +6,38 @@
     <title>Cynthia's destinations</title>
 </head>
 <body>
-    <h2>Places Visited</h2>
-    <h2>Add a Contact:</h2>
-  <form id="new-contact">
-    <label for="new-first-name">First Name</label>
-    <input type="text" id="new-first-name" name="new-first-name">
-    <label for="new-last-name">Last Name</label>
-    <input type="text" id="new-last-name" name="new-last-name">
-    <label for="new-phone-number">Phone Number</label>
-    <input type="text" id="new-phone-number" name="new-phone-number">
-    <button type="submit">Add</button>
-  </form>
-
-  <h2>Contacts:</h2>
-  <div id="contacts">
-  </div>
-
-  <div id="contact-details" class="hidden">
-    <p>First Name: <span id="first-name"></span></p>
-    <p>Last Name: <span id="last-name"></span></p>
-    <p>Phone Number: <span id="phone-number"></span></p>
-  </div>
+    <h2>Destination Visited</h2>
+    <section class="destination-visited">
+      <h2>Add a Destination:</h2>
+      <form id="new-destination">
+        <label for="new-location">Location:</label>
+        <input type="text" id="new-location" name="new-location" required>
+        <label for="new-landmark">Landmark:</label>
+        <input type="text" id="new-landmark" name="new-landmark" required>
+        <label for="new-time-of-year">Time of year:</label>
+        <input type="text" id="new-time-of-year" name="new-time-of-year" required>
+        <label for="new-notes">Notes:</label>
+        <input type="text" id="new-notes" name="new-notes" required>
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+    <section class="details">
+      <h2>Destinations:</h2>
+      <div id="destinations">
+      </div>
+    </section>
+    <section class="display">
+      <div id="destinations-details" class="hidden">
+        <p>Location: <span id="location"></span></p>
+        <p>Landmarks: <span id="landmarks"></span></p>
+        <p>Time of year: <span id="time-of-year"></span></p>
+        <p>Notes: <span id="notes"></span></p>
+      </div>
+    </section>
+    <footer>
+      <p>&copy; 2023 Cynthia's Travel Log</p>
+      <p>All rights reserved.</p>
+      <p>Contact: Cynthia Mugo <a href="mailto:cynthiamugo25@gmail.com"></a></p>
+    </footer>
 </body>
 </html>
