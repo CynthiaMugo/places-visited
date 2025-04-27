@@ -1,15 +1,17 @@
 // Business Logic for AddressBook ---------
-function AddressBook() {
-    this.contacts = {};
+function DestinationLog() {
+    this.destination = {};
     this.currentId = 0;
   }
   
-  AddressBook.prototype.addContact = function(contact) {
-    contact.id = this.assignId();
-    this.contacts[contact.id] = contact;
+  // Assign ID to each destination
+  DestinationLog.prototype.addDestination = function(destination) {
+    destination.id = this.assignId();
+    this.destination[destination.id] = destination;
   };
   
-  AddressBook.prototype.assignId = function() {
+  // Increment ID for each new destination
+  DestinationLog.prototype.assignId = function() {
     this.currentId += 1;
     return this.currentId;
   };
