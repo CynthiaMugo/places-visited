@@ -23,13 +23,13 @@ function DestinationLog() {
     return false;
   };
   
-  AddressBook.prototype.deleteContact = function(id) {
-    if (this.contacts[id] === undefined) {
-      return false;
-    }
-    delete this.contacts[id];
-    return true;
-  };
+  // AddressBook.prototype.deleteContact = function(id) {
+  //   if (this.contacts[id] === undefined) {
+  //     return false;
+  //   }
+  //   delete this.contacts[id];
+  //   return true;
+  // };
   
   // Business Logic for destinations ---------
   function Destination(location, landmark, timeOfYear, notes) {
