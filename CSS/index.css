@@ -4,8 +4,15 @@
 body {
     background-color: #99CCFF;
     font-family: Arial, sans-serif;
+    color: #162655;
     margin: 0;
     padding: 0;
+}
+#paragraph {
+    text-align: center;
+    margin: 5px;
+    font-size: 17px;
+    font-style: italic;
 }
 .footer {
     position: fixed;
@@ -65,5 +72,5 @@ a {
 }
 a:hover {
     text-decoration: underline;
-    color: #0056b3;
+    color: white;
 }
