@@ -31,15 +31,16 @@ function DestinationLog() {
     return true;
   };
   
-  // Business Logic for Contacts ---------
-  function Contact(firstName, lastName, phoneNumber) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.phoneNumber = phoneNumber;
+  // Business Logic for destinations ---------
+  function Destination(location, landmark, timeOfYear, notes) {
+    this.location = location;
+    this.landmark = landmark;
+    this.timeOfYear = timeOfYear;
+    this.notes = notes;
   }
   
-  Contact.prototype.fullName = function() {
-    return this.firstName + " " + this.lastName;
+  Destination.prototype.summary = function() {
+    return this.location + " " + this.landmark + " " + this.timeOfYear + " " + this.notes;
   };
   
   // User Interface Logic ---------
