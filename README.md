@@ -18,7 +18,25 @@ This project was developed as part of a full-stack learning journey, utilizing H
 
 ## Test-Driven Development (TDD)
 
-|
+1. Test: Create a Destination object with location, landmarks, time of year, and notes.
+Expectation: A Destination instance should store all the provided properties correctly.
+
+2. Test: Add a new destination to the DestinationLog.
+Expectation: The DestinationLog should include the new destination in its record with a unique ID.
+
+3. Test: Find a destion by its ID.
+Expectation: When given a valid ID, the DestinationLog should return the correct Destination object.
+
+4. Test: Try to find a destination with an invalid ID.
+Expectation: If the ID does not exist, the method should return false.
+
+5. Test: Delete a destination by its ID.
+Expectation: If the ID exists, the destination should be removed from the log and return true.
+
+6. Test: Try to delete a destination with an invalid ID.
+Expectation: If the ID doesn't exist, the method should return false.
+
+
 
 ## Known Bugs  
 *   

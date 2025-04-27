@@ -1,13 +1,13 @@
 // Business Logic for AddressBook ---------
 function DestinationLog() {
-    this.destination = {};
+    this.destinations = {};
     this.currentId = 0;
   }
   
   // Assign ID to each destination
   DestinationLog.prototype.addDestination = function(destination) {
     destination.id = this.assignId();
-    this.destination[destination.id] = destination;
+    this.destinations[destination.id] = destination;
   };
   
   // Increment ID for each new destination
@@ -23,13 +23,14 @@ function DestinationLog() {
     return false;
   };
   
-  // AddressBook.prototype.deleteContact = function(id) {
-  //   if (this.contacts[id] === undefined) {
-  //     return false;
-  //   }
-  //   delete this.contacts[id];
-  //   return true;
-  // };
+  // delete destination by ID
+  DestinationLog.prototype.deleteDestination = function(id) {
+    if (this.destinations[id] === undefined) {
+      return false;
+    }
+    delete this.destinations[id];
+    return true;
+  };
   
   // Business Logic for destinations ---------
   function Destination(location, landmark, timeOfYear, notes) {
