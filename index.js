@@ -47,45 +47,102 @@ function DestinationLog() {
   // User Interface Logic ---------
   let destinationLog = new DestinationLog();
   
-  function listDestinations(destinationLogToDisplay) {
-    let destinationsDiv = document.querySelector("div#destinations");
-    destinationsDiv.innerText = null;
-    const ul = document.createElement("ul");
-    Object.keys(destinationLogToDisplay.destinations).forEach(function(key) {
-      const destination = destinationLogToDisplay.findDestination(key);
+  const predefinedDestinations = [
+    {
+        id: 1,
+        location: "Paris",
+        landmark: "Eiffel Tower",
+        timeOfYear: "Spring",
+        notes: "A beautiful city with a rich history and culture."
+    },
+    {
+        id: 2,
+        location: "New York",
+        landmark: "Statue of Liberty",
+        timeOfYear: "Summer",
+        notes: "The city that never sleeps, bustling with energy and life."
+    },
+    {
+        id: 3,
+        location: "Tokyo",
+        landmark: "Mount Fuji",
+        timeOfYear: "Autumn",
+        notes: "A serene place with breathtaking natural beauty."
+    }
+];
+
+function listDestinations() {
+  const destinationsDiv = document.querySelector("div#destinations");
+  destinationsDiv.innerHTML = "";  // Clear previous destinations
+
+  const ul = document.createElement("ul");
+
+  // Display predefined destinations
+  predefinedDestinations.forEach(function(destination) {
       const li = document.createElement("li");
-      li.append(destination.location);
+      li.innerText = destination.location;
       li.setAttribute("id", destination.id);
-      ul.append(li);
-    });
-    destinationsDiv.append(ul);
-  }
-  
-  function displayDestinationDetails(event) {
-    const destination = destinationLog.findDestination(event.target.id);
-    document.querySelector("#location").innerText = destination.location;
-    document.querySelector("#landmark").innerText = destination.landmark;
-    document.querySelector("#time-of-year").innerText = destination.timeOfYear;
-    document.querySelector("#notes").innerText = destination.notes;
-    document.querySelector("div#destinations-details").removeAttribute("class");
-  }
-  
-  function handleFormSubmission(event) {
-    event.preventDefault();
-    const inputtedLocation = document.querySelector("input#new-location").value;
-    const inputtedLandmark = document.querySelector("input#new-landmark").value;
-    const inputtedTimeOfYear = document.querySelector("input#new-time-of-year").value;
-    const inputtedNotes = document.querySelector("input#new-notes").value;
-
-    let newDestination = new Destination(inputtedLocation, inputtedLandmark, inputtedTimeOfYear, inputtedNotes);
-    destinationLog.addDestination(newDestination);
-    listDestinations(destinationLog);
-
-    // Clear the form fields after submission
-    document.getElementById("new-destination").reset();
-  }
-  
-  window.addEventListener("load", function() {
-    document.querySelector("form#new-destination").addEventListener("submit", handleFormSubmission);
-    document.querySelector("div#destinations").addEventListener("click", displayDestinationDetails);
+      li.addEventListener("click", function() {
+          displayDestinationDetails(destination);
+      });
+      ul.appendChild(li);
   });
+
+  // Display dynamically added destinations
+  Object.keys(destinationLog.destinations).forEach(function(key) {
+      const destination = destinationLog.findDestination(key);
+      const li = document.createElement("li");
+      li.innerText = destination.location;
+      li.setAttribute("id", destination.id);
+      li.addEventListener("click", function() {
+          displayDestinationDetails(destination);
+      });
+      ul.appendChild(li);
+  });
+
+  destinationsDiv.appendChild(ul);
+}
+
+// Function to display details of a clicked destination
+function displayDestinationDetails(destination) {
+  if (destination) {
+      document.querySelector("#location").innerText = destination.location;
+      document.querySelector("#landmark").innerText = destination.landmark;
+      document.querySelector("#time-of-year").innerText = destination.timeOfYear;
+      document.querySelector("#notes").innerText = destination.notes;
+      document.querySelector("div#destinations-details").classList.remove("hidden");
+  } else {
+      console.log("Destination object is undefined.");
+  }
+}
+
+// Handle form submission to add a new destination
+function handleFormSubmission(event) {
+  event.preventDefault();
+  
+  const inputtedLocation = document.querySelector("input#new-location").value;
+  const inputtedLandmark = document.querySelector("input#new-landmark").value;
+  const inputtedTimeOfYear = document.querySelector("input#new-time-of-year").value;
+  const inputtedNotes = document.querySelector("input#new-notes").value;
+  
+  // Create new destination object
+  let newDestination = new Destination(inputtedLocation, inputtedLandmark, inputtedTimeOfYear, inputtedNotes);
+  destinationLog.addDestination(newDestination);
+  listDestinations();  // Update the list to include the new destination
+
+  // Clear form fields after submission
+  document.getElementById("new-destination").reset();
+}
+
+// Event listener for form submission and displaying destination details
+window.addEventListener("load", function() {
+  listDestinations();  
+
+  document.querySelector("form#new-destination").addEventListener("submit", handleFormSubmission);
+  document.querySelector("div#destinations").addEventListener("click", function(event) {
+      const destination = destinationLog.findDestination(event.target.id);
+      if (destination) {
+          displayDestinationDetails(destination);
+      }
+  });
+});
