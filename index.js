@@ -50,24 +50,25 @@ function DestinationLog() {
   const predefinedDestinations = [
     {
         id: 1,
-        location: "Paris",
-        landmark: "Eiffel Tower",
-        timeOfYear: "Spring",
-        notes: "A beautiful city with a rich history and culture."
+        location: "Maasai Mara Game Reserve",
+        landmark: "Great Migration",
+        timeOfYear: "August 2023",
+        notes: "A renowned game reserve known for its incredible wildlife, including the Big Five: lion, elephant, buffalo, leopard, and rhinoceros). It's famous for the Great Migration of wildebeest and zebras, and also for luxury safari lodges and cultural experiences with the Maasai people.."
     },
+
     {
         id: 2,
-        location: "New York",
-        landmark: "Statue of Liberty",
-        timeOfYear: "Summer",
-        notes: "The city that never sleeps, bustling with energy and life."
+        location: "Lake Nakuru National Park",
+        landmark: "Flamingoes",
+        timeOfYear: "September 2022",
+        notes: "Known for its large populations of flamingos that congregate around the shores of Lake Nakuru."
     },
     {
         id: 3,
-        location: "Tokyo",
-        landmark: "Mount Fuji",
-        timeOfYear: "Autumn",
-        notes: "A serene place with breathtaking natural beauty."
+        location: "Diani Beach",
+        landmark: "White Sand Beaches",
+        timeOfYear: "December 2024",
+        notes: "A popular beach destination on the south coast of Kenya, known for its pristine beaches and vibrant coral reefs. Check out Flamboyant Hotel!"
     }
 ];
 
